@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - MR Car Auto Accessories</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image:
+                linear-gradient(rgba(0,0,0,.82), rgba(0,0,0,.82)),
+                url("img/white_background.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.7;
+        }
+
+        nav {
+            background: #111;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .logo span,
+        .page-title span {
+            color: #ff4d00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d00;
+        }
+
+        .nav-account {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-btn, .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ff4d00;
+            padding: 8px 22px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .login-btn:hover, .logout-btn:hover {
+            background-color: #ff4d00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .profile-link {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #ff4d00;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all .3s ease;
+        }
+        .profile-link:hover {
+            background: #ff4d00;
+            color: #111;
+        }
+
+
+        .page-title {
+            text-align: center;
+            font-size: 55px;
+            margin: 55px 0 40px;
+            text-shadow: 0 0 15px rgba(255,77,0,.5);
+        }
+
+        .checkout-container {
+            width: 92%;
+            max-width: 1050px;
+            margin: 0 auto 60px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 25px;
+        }
+
+        .checkout-box {
+            background: rgba(20,20,20,.94);
+            border: 1px solid #333;
+            border-left: 5px solid #ff4d00;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.5);
+            padding: 30px;
+        }
+
+        .checkout-box h2 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 500;
+        }
+
+        input,
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 14px;
+            background: #222;
+            color: white;
+            border: 2px solid #555;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 15px;
+            outline: none;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #ff4d00;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid #444;
+        }
+
+        .order-item:last-child {
+            border-bottom: none;
+        }
+
+        .order-price {
+            color: #ff4d00;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .grand-total {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #555;
+            display: flex;
+            justify-content: space-between;
+            font-size: 23px;
+            font-weight: 700;
+        }
+
+        #checkoutTotal {
+            color: #ff4d00;
+        }
+
+        .place-order-btn {
+            width: 100%;
+            margin-top: 25px;
+            padding: 13px;
+            background: #ff4d00;
+            color: white;
+            border: 2px solid #ff4d00;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .place-order-btn:hover {
+            background: transparent;
+            color: #ff4d00;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #aaa;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: #ff4d00;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            text-align: center;
+            background: #080808;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 14px;
+        }
+
+        .empty-message {
+            color: #aaa;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 800px) {
+            .checkout-container {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            nav ul {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .page-title {
+                font-size: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a class="logo" href="index.html">
+            MR Car<span> Auto</span>
+        </a>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="purchase.html">Purchase</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+<div class="nav-account">
+                <button
+                    id="loginButton"
+                    class="login-btn"
+                    onclick="window.location.href='login.html'">
+                    Login
+                </button>
+
+                <a
+                    id="profileButton"
+                    class="profile-link"
+                    href="profile.php"
+                    title="Profile"
+                    style="display:none;">
+                    👤
+                </a>
+
+                <button
+                    id="logoutButton"
+                    class="logout-btn"
+                    type="button"
+                    style="display:none;"
+                    onclick="logoutUser()">
+                    Logout
+                </button>
+            </div>
+    </nav>
+</header>
+
+<h1 class="page-title">
+    <span>Checkout</span>
+</h1>
+
+<div class="checkout-container">
+
+    <section class="checkout-box">
+        <h2>Customer Information</h2>
+
+        <form id="checkoutForm">
+
+            <div class="form-group">
+                <label for="customerName">Full Name</label>
+                <input type="text" id="customerName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="customerPhone">Phone Number</label>
+                <input type="tel" id="customerPhone" required>
+            </div>
+
+            <div class="form-group">
+                <label for="address">Delivery Address</label>
+                <textarea id="address" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="payment">Payment Method</label>
+                <select id="payment" required>
+                    <option value="">Select payment method</option>
+                    <option value="Online Banking">Online Banking</option>
+                    <option value="Credit/Debit Card">Credit/Debit Card</option>
+                    <option value="E-Wallet">E-Wallet</option>
+                </select>
+            </div>
+
+            <button class="place-order-btn" type="submit">
+                Place Order
+            </button>
+
+            <a class="back-link" href="purchase.html">
+                ← Back to Purchase
+            </a>
+
+        </form>
+    </section>
+
+    <section class="checkout-box">
+        <h2>Order Summary</h2>
+
+        <div id="orderItems"></div>
+
+        <div class="grand-total">
+            <span>Total</span>
+            <span id="checkoutTotal">RM 0.00</span>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 MR Car Auto Accessories. All Rights Reserved.</p>
+</footer>
+
+<script>
+    const cart = JSON.parse(localStorage.getItem("carCart")) || [];
+
+    function getTotal() {
+        return cart.reduce(
+            (total, item) => total + (item.price * item.quantity),
+            0
+        );
+    }
+
+
+    function renderOrder() {
+        const orderItems = document.getElementById("orderItems");
+        const checkoutTotal = document.getElementById("checkoutTotal");
+
+        orderItems.innerHTML = "";
+
+        if (cart.length === 0) {
+            orderItems.innerHTML =
+                '<div class="empty-message">Your cart is empty.</div>';
+
+            checkoutTotal.textContent = "RM 0.00";
+            return;
+        }
+
+        cart.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "order-item";
+
+            div.innerHTML = `
+                <div>
+                    <strong>${item.name}</strong><br>
+                    Quantity: ${item.quantity}
+                </div>
+                <div class="order-price">
+                    RM ${(item.price * item.quantity).toFixed(2)}
+                </div>
+            `;
+
+            orderItems.appendChild(div);
+        });
+
+        checkoutTotal.textContent = "RM " + getTotal().toFixed(2);
+    }
+
+document.getElementById("checkoutForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    if (cart.length === 0) {
+        alert("Your cart is empty. Please add a product first.");
+        window.location.href = "purchase.html";
+        return;
+    }
+
+    const payload = {
+        customerName: document.getElementById("customerName").value,
+        customerPhone: document.getElementById("customerPhone").value,
+        address: document.getElementById("address").value,
+        paymentMethod: document.getElementById("payment").value,
+        cart: cart
+    };
+
+    fetch("checkout.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            alert(data.message + "\n\nOrder ID: " + data.order_id + "\nTotal Paid: RM " + getTotal().toFixed(2));
+            localStorage.removeItem("carCart");
+            window.location.href = "purchase.html";
+        } else {
+            alert("Error: " + data.message);
+            if (data.message.includes("log in")) {
+                window.location.href = "login.html";
+            }
+        }
+    })
+    .catch(error => {
+        console.error("Checkout submission error:", error);
+        alert("An error occurred while processing your order. Please try again.");
+    });
+});
+
+    renderOrder();
+</script>
+
+<script src="auth_nav.js"></script>
+
+</body>
+</html>

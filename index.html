@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MR Car Auto Accessories</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background-color: #111;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #ff4d00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d00;
+        }
+
+        /* Account Buttons & Icons */
+        .nav-account {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-btn, .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ff4d00;
+            padding: 8px 22px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+
+        .login-btn:hover, .logout-btn:hover {
+            background-color: #ff4d00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .profile-link {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #ff4d00;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all .3s ease;
+        }
+
+        .profile-link:hover {
+            background: #ff4d00;
+            color: #111;
+        }
+
+        /* Hero / Welcome Section */
+        .hero {
+            min-height: 550px;
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            background:
+                linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+                url("https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            max-width: 650px;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 55px;
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+
+        .hero-content h1 span {
+            color: #ff4d00;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: #eee;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff4d00;
+            color: white;
+            padding: 13px 28px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        /* Categories */
+        .categories {
+            padding: 60px 8%;
+            text-align: center;
+        }
+
+        .categories h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .categories > p {
+            color: #666;
+            margin-bottom: 35px;
+        }
+
+        .category-container {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        .category {
+            background-color: white;
+            width: 250px;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .category:hover {
+            transform: translateY(-8px);
+        }
+
+        .category .icon {
+            font-size: 45px;
+            margin-bottom: 15px;
+        }
+
+        .category h3 {
+            margin-bottom: 10px;
+        }
+
+        .category p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: #111;
+            color: white;
+            text-align: center;
+            padding: 60px 8%;
+        }
+
+        .about h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .about p {
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.8;
+            color: #ccc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #080808;
+            color: #aaa;
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 12px 5%;
+            }
+
+            nav ul {
+                gap: 12px;
+            }
+
+            nav ul li a {
+                font-size: 12px;
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <nav>
+            <a class="logo" href="index.html">MR Car<span> Auto</span></a>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="purchase.html">Purchase</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-account">
+                <button
+                    id="loginButton"
+                    class="login-btn"
+                    onclick="window.location.href='login.html'">
+                    Login
+                </button>
+
+                <a
+                    id="profileButton"
+                    class="profile-link"
+                    href="profile.php"
+                    title="Profile"
+                    style="display:none;">
+                    👤
+                </a>
+
+                <button
+                    id="logoutButton"
+                    class="logout-btn"
+                    type="button"
+                    style="display:none;"
+                    onclick="logoutUser()">
+                    Logout
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Welcome / Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>
+                Upgrade Your Car.<br>
+                <span>Upgrade Your Style.</span>
+            </h1>
+            <p>
+                Welcome to MR Car Auto, your one-stop destination
+                for quality car accessories and vehicle customization.
+                Make your car look better, feel better and stand out
+                from the crowd.
+            </p>
+            <a href="purchase.html" class="btn">
+                Explore Products
+            </a>
+        </div>
+    </section>
+
+    <!-- Product Categories -->
+    <section class="categories">
+        <h2>What We Offer</h2>
+        <p>Everything you need to personalize and enhance your vehicle.</p>
+
+        <div class="category-container">
+            <div class="category">
+                <div class="icon">🚗</div>
+                <h3>Exterior Accessories</h3>
+                <p>Spoilers, body kits, grilles, lighting and other exterior upgrades.</p>
+            </div>
+
+            <div class="category">
+                <div class="icon">💺</div>
+                <h3>Interior Accessories</h3>
+                <p>Seat covers, floor mats, steering wheels and interior styling products.</p>
+            </div>
+
+            <div class="category">
+                <div class="icon">🔊</div>
+                <h3>Car Electronics</h3>
+                <p>Dashcams, speakers, LED lighting and other automotive electronics.</p>
+            </div>
+
+            <div class="category">
+                <div class="icon">⚙️</div>
+                <h3>Performance</h3>
+                <p>Performance parts and upgrades designed to improve your driving experience.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <h2>Built for Car Enthusiasts</h2>
+        <p>
+            At MR Car Auto, we believe every car should reflect
+            its owner's personality. We provide a wide range of
+            automotive accessories and customization products to help
+            you create the car you've always wanted.
+        </p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 MR Car Auto Accessories. All Rights Reserved.</p>
+    </footer>
+
+    <script src="auth_nav.js"></script>
+</body>
+</html>

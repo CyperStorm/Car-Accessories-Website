@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Purchase - MR Car Auto Accessories</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image:
+                linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+                url("img/white_background.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.7;
+        }
+
+        nav {
+            background-color: #111;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .logo span,
+        .page-title span,
+        .calculator h2 span {
+            color: #ff4d00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: .3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d00;
+        }
+
+   .nav-account {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-btn, .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ff4d00;
+            padding: 8px 22px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .login-btn:hover, .logout-btn:hover {
+            background-color: #ff4d00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .profile-link {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #ff4d00;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all .3s ease;
+        }
+        .profile-link:hover {
+            background: #ff4d00;
+            color: #111;
+        }
+
+
+        .page-title {
+            text-align: center;
+            font-size: 55px;
+            margin: 55px 0 40px;
+            color: white;
+            text-shadow: 0 0 15px rgba(255,77,0,.5);
+        }
+
+        .product-section,
+        .calculator,
+        .cart-section {
+            background-color: rgba(20,20,20,.94);
+            border: 1px solid #333;
+            border-left: 5px solid #ff4d00;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.5);
+        }
+
+        .product-section {
+            width: 92%;
+            max-width: 1400px;
+            margin: 0 auto 40px;
+            padding: 25px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #ff4d00;
+            color: #111;
+            font-size: 17px;
+            padding: 16px 12px;
+            text-align: center;
+        }
+
+        td {
+            padding: 20px 12px;
+            text-align: center;
+            font-size: 15px;
+            border-bottom: 1px solid #444;
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: rgba(255,77,0,.07);
+        }
+
+        .product-name {
+            color: #ff4d00;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .description {
+            color: #ccc;
+            line-height: 1.6;
+            text-align: left;
+        }
+
+        .price {
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .img_format {
+            width: 220px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #555;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,.6);
+            transition: .3s;
+        }
+
+        .img_format:hover {
+            transform: scale(1.04);
+            border-color: #ff4d00;
+        }
+
+        .calculator {
+            width: 600px;
+            max-width: 92%;
+            margin: 0 auto 40px;
+            padding: 35px;
+        }
+
+        .calculator h2,
+        .cart-section h2 {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 12px 14px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            border: 2px solid #555;
+            border-radius: 6px;
+            background: #222;
+            color: white;
+            outline: none;
+        }
+
+        select:focus,
+        input[type="number"]:focus {
+            border-color: #ff4d00;
+            box-shadow: 0 0 8px rgba(255,77,0,.25);
+        }
+
+        .button-row {
+            display: flex;
+            gap: 12px;
+        }
+
+        .cal-bt,
+        .checkout-btn,
+        .remove-btn {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .cal-bt {
+            flex: 1;
+            padding: 12px;
+            font-size: 16px;
+            color: white;
+            border: 2px solid #ff4d00;
+            background: #ff4d00;
+        }
+
+        .cal-bt:hover {
+            background: transparent;
+            color: #ff4d00;
+            transform: translateY(-2px);
+        }
+
+        #previewTotal {
+            margin-top: 15px;
+            padding: 12px;
+            background: #111;
+            border-radius: 6px;
+            text-align: center;
+            color: #ff4d00;
+            font-size: 20px;
+            font-weight: 700;
+            border: 1px solid #333;
+        }
+
+        .cart-section {
+            width: 92%;
+            max-width: 1000px;
+            margin: 0 auto 60px;
+            padding: 30px;
+        }
+
+        .cart-section h2 {
+            margin-bottom: 20px;
+        }
+
+        #cartItems {
+            display: grid;
+            gap: 12px;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 15px;
+            align-items: center;
+            padding: 15px;
+            background: #191919;
+            border: 1px solid #333;
+            border-radius: 8px;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+        }
+
+        .cart-item-price {
+            color: #ff4d00;
+            font-weight: 700;
+        }
+
+        .remove-btn {
+            padding: 7px 12px;
+            border: 1px solid #aa3333;
+            color: #ff7777;
+            background: transparent;
+        }
+
+        .remove-btn:hover {
+            background: #aa3333;
+            color: white;
+        }
+
+        .cart-empty {
+            text-align: center;
+            color: #999;
+            padding: 20px 0;
+        }
+
+        .cart-summary {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .cart-total {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .cart-total span {
+            color: #ff4d00;
+        }
+
+        .checkout-btn {
+            padding: 12px 22px;
+            border: 2px solid #ff4d00;
+            background: #ff4d00;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .checkout-btn:hover {
+            background: transparent;
+            color: #ff4d00;
+            transform: translateY(-2px);
+        }
+
+        .checkout-btn.disabled {
+            opacity: .45;
+            pointer-events: none;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 25px;
+            text-align: center;
+            background: #080808;
+            border-top: 1px solid #333;
+            color: #888;
+            font-size: 14px;
+        }
+
+        @media (max-width: 900px) {
+            nav {
+                padding: 12px 4%;
+            }
+
+            nav ul {
+                gap: 16px;
+            }
+
+            .cart-item {
+                grid-template-columns: 1fr auto;
+            }
+
+            .cart-summary {
+                flex-direction: column;
+                align-items: stretch;
+                text-align: center;
+            }
+
+            .checkout-btn {
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 650px) {
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px;
+            }
+
+            nav ul {
+                order: 3;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .page-title {
+                font-size: 40px;
+            }
+
+            .product-section {
+                width: 95%;
+            }
+
+            .img_format {
+                width: 150px;
+                height: 110px;
+            }
+
+            th,
+            td {
+                font-size: 13px;
+                padding: 10px 7px;
+            }
+
+            .calculator,
+            .cart-section {
+                width: 92%;
+                padding: 22px;
+            }
+        }
+    </style>
+
+    <script>
+        const products = {
+            car_player: {
+                name: "Car Player",
+                price: 1889.90
+            },
+            headlight: {
+                name: "LED Headlights",
+                price: 96.60
+            },
+            exhaust: {
+                name: "Exhaust Pipe",
+                price: 679.20
+            }
+        };
+
+        let cart = JSON.parse(localStorage.getItem("carCart")) || [];
+
+        function calculatePreview() {
+            const product = document.getElementById("product");
+            const quantity = Number(document.getElementById("quantity").value);
+            const price = Number(
+                product.options[product.selectedIndex].getAttribute("data-price")
+            );
+
+            if (!quantity || quantity < 1) {
+                document.getElementById("previewTotal").textContent = "Enter a valid quantity";
+                return;
+            }
+
+            document.getElementById("previewTotal").textContent =
+                "Item Total: RM " + (price * quantity).toFixed(2);
+        }
+
+        function addToCart() {
+            const productId = document.getElementById("product").value;
+            const quantity = Number(document.getElementById("quantity").value);
+
+            if (!quantity || quantity < 1) {
+                alert("Please enter a quantity of at least 1.");
+                return;
+            }
+
+            const product = products[productId];
+            const existing = cart.find(item => item.id === productId);
+
+            if (existing) {
+                existing.quantity += quantity;
+            } else {
+                cart.push({
+                    id: productId,
+                    name: product.name,
+                    price: product.price,
+                    quantity: quantity
+                });
+            }
+
+            saveCart();
+            renderCart();
+
+            document.getElementById("quantity").value = 1;
+            calculatePreview();
+            alert(product.name + " has been added to your cart.");
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            saveCart();
+            renderCart();
+        }
+
+        function saveCart() {
+            localStorage.setItem("carCart", JSON.stringify(cart));
+        }
+
+        function getCartTotal() {
+            return cart.reduce(
+                (total, item) => total + (item.price * item.quantity),
+                0
+            );
+        }
+
+        function handleCheckout(event) {
+    event.preventDefault(); // Prevent immediate navigation
+
+    if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+    }
+
+    // Check login status with session_status.php
+    fetch("session_status.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedIn) {
+                // User is logged in -> proceed to checkout
+                window.location.href = "checkout.html";
+            } else {
+                // User is not logged in -> alert and redirect to login
+                alert("You must log in to proceed to checkout.");
+                window.location.href = "login.html";
+            }
+        })
+        .catch(error => {
+            console.error("Error checking session:", error);
+            alert("An error occurred. Please try again.");
+        });
+}
+
+        function renderCart() {
+            const cartItems = document.getElementById("cartItems");
+            const cartTotal = document.getElementById("cartTotal");
+            const checkoutBtn = document.getElementById("checkoutBtn");
+
+            cartItems.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartItems.innerHTML =
+                    '<div class="cart-empty">Your cart is empty. Add a product above.</div>';
+
+                cartTotal.textContent = "RM 0.00";
+                checkoutBtn.classList.add("disabled");
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+
+                const div = document.createElement("div");
+                div.className = "cart-item";
+
+                div.innerHTML = `
+                    <div class="cart-item-name">
+                        ${item.name}
+                    </div>
+                    <div>
+                        Qty: ${item.quantity}
+                    </div>
+                    <div class="cart-item-price">
+                        RM ${itemTotal.toFixed(2)}
+                    </div>
+                    <button class="remove-btn" onclick="removeFromCart(${index})">
+                        Remove
+                    </button>
+                `;
+
+                cartItems.appendChild(div);
+            });
+
+            cartTotal.textContent = "RM " + getCartTotal().toFixed(2);
+            checkoutBtn.classList.remove("disabled");
+        }
+
+        window.onload = function () {
+            renderCart();
+            calculatePreview();
+        };
+    </script>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <a class="logo" href="index.html">
+                MR Car<span> Auto</span>
+            </a>
+
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="purchase.html">Purchase</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-account">
+                <button
+                    id="loginButton"
+                    class="login-btn"
+                    onclick="window.location.href='login.html'">
+                    Login
+                </button>
+
+                <a
+                    id="profileButton"
+                    class="profile-link"
+                    href="profile.php"
+                    title="Profile"
+                    style="display:none;">
+                    👤
+                </a>
+
+                <button
+                    id="logoutButton"
+                    class="logout-btn"
+                    type="button"
+                    style="display:none;"
+                    onclick="logoutUser()">
+                    Logout
+                </button>
+            </div>
+
+
+        </nav>
+    </header>
+
+    <h1 class="page-title">
+        Car <span>Accessories</span>
+    </h1>
+
+    <section class="product-section">
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Image</th>
+                    <th>Price (RM)</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td class="product-name">Car Player</td>
+                    <td>
+                        <img class="img_format" src="img/car_player.JPG" alt="Car Player">
+                    </td>
+                    <td class="price">RM 1,889.90</td>
+                    <td class="description">
+                        Soundstream Android Player 9" / 10.1"
+                        IPS Touch Screen HD Car Entertainment
+                        System with 48 Band DSP.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product-name">LED Headlights</td>
+                    <td>
+                        <img class="img_format" src="img/led_headlights.JPG" alt="LED Headlights">
+                    </td>
+                    <td class="price">RM 96.60</td>
+                    <td class="description">
+                        YIRAY 2PCS High Quality 110W
+                        12000LM CSP Car Headlight LED Bulbs
+                        with Canbus technology.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="product-name">Exhaust Pipe</td>
+                    <td>
+                        <img class="img_format" src="img/exhaust.JPG" alt="Exhaust Pipe">
+                    </td>
+                    <td class="price">RM 679.20</td>
+                    <td class="description">
+                        Honda CRV 2.0 2006+ Car Exhaust Pipe
+                        Manifold with Euro 4 Ceramic Catalytic
+                        Converter.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section class="calculator">
+        <h2>Select and <span>Add to Cart</span></h2>
+
+        <div class="form-group">
+            <label for="product">Select Product</label>
+            <select id="product" onchange="calculatePreview()">
+                <option data-price="1889.90" value="car_player">
+                    Car Player - RM 1,889.90
+                </option>
+                <option data-price="96.60" value="headlight">
+                    LED Headlights - RM 96.60
+                </option>
+                <option data-price="679.20" value="exhaust">
+                    Exhaust Pipe - RM 679.20
+                </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input
+                type="number"
+                id="quantity"
+                min="1"
+                value="1"
+                oninput="calculatePreview()">
+        </div>
+
+        <div class="button-row">
+
+            <button type="button" class="cal-bt" onclick="addToCart()">
+                Add to Cart
+            </button>
+        </div>
+
+        <div id="previewTotal">
+            Item Total: RM 1,889.90
+        </div>
+    </section>
+
+    <section class="cart-section">
+        <h2>Your <span>Cart</span></h2>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-summary">
+            <div class="cart-total">
+                Cart Total: <span id="cartTotal">RM 0.00</span>
+            </div>
+
+<a
+    id="checkoutBtn"
+    class="checkout-btn disabled"
+    href="checkout.html"
+    onclick="handleCheckout(event)">
+    Proceed to Checkout
+</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 MR Car Auto Accessories. All Rights Reserved.</p>
+    </footer>
+
+    <script src="auth_nav.js"></script>
+
+</body>
+</html>

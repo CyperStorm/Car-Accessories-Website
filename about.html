@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>About Us - MR Car Auto Accessories</title>
+
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+
+    /* =========================
+       GENERAL
+    ========================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image:
+        linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)),
+        url("img/white_background.jpg");
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+
+      font-family: 'Poppins', sans-serif;
+      color: white;
+      line-height: 1.7;
+    }
+
+
+    /* =========================
+       NAVIGATION BAR
+    ========================= */
+
+        /* Navigation Bar */
+        nav {
+            background-color: #111;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #ff4d00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d00;
+        }
+
+
+    /* =========================
+       LOGIN BUTTON
+    ========================= */
+    .nav-account {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-btn, .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ff4d00;
+            padding: 8px 22px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .login-btn:hover, .logout-btn:hover {
+            background-color: #ff4d00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .profile-link {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #ff4d00;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all .3s ease;
+        }
+        .profile-link:hover {
+            background: #ff4d00;
+            color: #111;
+        }
+
+
+
+
+    /* =========================
+       PAGE TITLE
+    ========================= */
+
+    .page-title {
+      text-align: center;
+
+      font-size: 55px;
+
+      margin-top: 60px;
+      margin-bottom: 40px;
+
+      font-family: 'Poppins', sans-serif;
+
+      color: white;
+
+      text-shadow: 0 0 15px rgba(255, 77, 0, 0.5);
+    }
+
+    .page-title span {
+      color: rgb(255, 77, 0);
+    }
+
+
+    /* =========================
+       CONTENT BOX
+    ========================= */
+
+    .box {
+      max-width: 1100px;
+
+      margin: 0 auto 35px auto;
+
+      padding: 40px;
+
+      background-color: rgba(20, 20, 20, 0.88);
+
+      border: 1px solid #333;
+
+      border-left: 5px solid #ff4d00;
+
+      border-radius: 12px;
+
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+
+      transition: transform 0.3s ease,
+                  box-shadow 0.3s ease;
+    }
+
+    .box:hover {
+      transform: translateY(-4px);
+
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+    }
+
+
+    /* Section headings */
+
+    .box h2 {
+      font-size: 30px;
+
+      margin-bottom: 20px;
+
+      color: #ff4d00;
+
+      font-weight: 700;
+    }
+
+
+    /* Paragraph */
+
+    .box p {
+      font-size: 16px;
+
+      color: #dddddd;
+
+      text-align: justify;
+
+      line-height: 1.9;
+    }
+
+
+    /* =========================
+       LIST
+    ========================= */
+
+    .box ul {
+      margin-top: 15px;
+
+      margin-left: 25px;
+
+      color: #dddddd;
+    }
+
+    .box li {
+      margin-bottom: 10px;
+
+      padding-left: 5px;
+    }
+
+    .box li::marker {
+      color: #ff4d00;
+    }
+
+
+    /* =========================
+       IMAGES
+    ========================= */
+
+    .img_format {
+      display: block;
+
+      width: 700px;
+      max-width: 100%;
+      height: 400px;
+
+      object-fit: cover;
+
+      margin: 30px auto 0 auto;
+
+      border: 2px solid #555;
+
+      border-radius: 12px;
+
+      box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.6);
+
+      transition: transform 0.3s ease;
+    }
+
+    .img_format:hover {
+      transform: scale(1.02);
+    }
+
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      margin-top: 60px;
+
+      padding: 25px;
+
+      text-align: center;
+
+      background-color: #080808;
+
+      border-top: 1px solid #333;
+
+      color: #888;
+
+      font-size: 14px;
+    }
+
+
+    /* =========================
+       RESPONSIVE DESIGN
+    ========================= */
+
+    @media (max-width: 900px) {
+
+      .navbar {
+        padding: 0 25px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+
+      .nav-item {
+        font-size: 15px;
+      }
+
+      .page-title {
+        font-size: 45px;
+      }
+
+      .box {
+        margin-left: 25px;
+        margin-right: 25px;
+
+        padding: 30px;
+      }
+    }
+
+
+    @media (max-width: 650px) {
+
+      .navbar {
+        height: auto;
+
+        padding: 15px;
+
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 15px;
+      }
+
+      .logo {
+        width: 110px;
+      }
+
+      .nav-links {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        gap: 20px;
+      }
+
+
+      .page-title {
+        font-size: 38px;
+
+        margin-top: 40px;
+      }
+
+      .box {
+        margin-left: 15px;
+        margin-right: 15px;
+
+        padding: 25px;
+      }
+
+      .box h2 {
+        font-size: 25px;
+      }
+
+      .box p,
+      .box li {
+        font-size: 14px;
+      }
+
+      .img_format {
+        height: 250px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =========================
+       NAVIGATION
+  ========================== -->
+
+  <header>
+
+    <!-- Navigation -->
+    <nav>
+        <a class="logo" href="index.html" style="text-decoration: none;">MR Car<span> Auto</span></a>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="purchase.html">Purchase</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-account">
+                <button
+                    id="loginButton"
+                    class="login-btn"
+                    onclick="window.location.href='login.html'">
+                    Login
+                </button>
+
+                <a
+                    id="profileButton"
+                    class="profile-link"
+                    href="profile.php"
+                    title="Profile"
+                    style="display:none;">
+                    👤
+                </a>
+
+                <button
+                    id="logoutButton"
+                    class="logout-btn"
+                    type="button"
+                    style="display:none;"
+                    onclick="logoutUser()">
+                    Logout
+                </button>
+        </div>
+
+        
+
+
+    </nav>
+
+  </header>
+
+
+
+  <!-- =========================
+       PAGE TITLE
+  ========================== -->
+
+  <h1 class="page-title">
+    About <span>Us</span>
+  </h1>
+
+
+
+  <!-- =========================
+       ABOUT US
+  ========================== -->
+
+  <div class="box">
+
+    <p>
+      MR Car Auto Accessories is a car accessories shop dedicated
+      to providing quality auto parts and customization products
+      for car enthusiasts.
+
+      We offer a wide range of accessories, including exterior
+      styling parts, interior accessories, lighting, wheels,
+      and performance upgrades.
+
+      We believe that every car should reflect its owner's
+      personality and style.
+
+      Our goal is to make car customization simple, affordable,
+      and enjoyable for everyone.
+    </p>
+
+  </div>
+
+
+
+  <!-- =========================
+       OUR HISTORY
+  ========================== -->
+
+  <div class="box">
+
+    <h2>Our History</h2>
+
+    <p>
+      Founded in 2020, MR Car Auto Accessories started as a small
+      local car accessories business with a passion for automotive
+      customization.
+
+      Over the years, we have expanded our product range to meet
+      the needs of different types of car owners and enthusiasts.
+
+      Today, we continue to provide reliable products and friendly
+      service while keeping up with the latest trends in the
+      automotive customization industry.
+    </p>
+
+
+    <img
+      class="img_format"
+      src="img/workshop2020.JPG"
+      alt="MR Car Auto Accessories workshop">
+
+  </div>
+
+
+
+  <!-- =========================
+       MAIN BUSINESS
+  ========================== -->
+
+  <div class="box">
+
+    <h2>Main Business</h2>
+
+    <p>
+      Our main business focuses on providing automotive products
+      and customization solutions, including:
+    </p>
+
+
+    <ul>
+
+      <li>
+        Essential replacement and upgrade parts for different
+        car models.
+      </li>
+
+      <li>
+        Spoilers, body kits, grilles, decals, and other
+        styling accessories.
+      </li>
+
+      <li>
+        LED headlights, interior lights, and other lighting
+        accessories.
+      </li>
+
+      <li>
+        Wheels, performance accessories, and selected
+        upgrade parts.
+      </li>
+
+      <li>
+        Seat covers, floor mats, steering wheel accessories,
+        and interior styling products.
+      </li>
+
+      <li>
+        Products that allow customers to personalize the
+        appearance and style of their vehicles.
+      </li>
+
+    </ul>
+
+
+    <img
+      class="img_format"
+      src="img/headlamp.JPG"
+      alt="Headlamp installation">
+
+  </div>
+
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <p>
+      © 2026 MR Car Auto Accessories. All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <script src="auth_nav.js"></script>
+
+
+</body>
+</html>

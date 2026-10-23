@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.78), rgba(0, 0, 0, 0.78)),
+                url("img/white_background.jpg");
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+
+            font-family: 'Poppins', sans-serif;
+            color: white;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        nav {
+            background-color: #111;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #ff4d00;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #ff4d00;
+        }
+        /* =========================
+           LOGIN BUTTON
+        ========================= */
+
+        .nav-account {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-btn, .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid #ff4d00;
+            padding: 8px 22px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .login-btn:hover, .logout-btn:hover {
+            background-color: #ff4d00;
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .profile-link {
+            width: 42px;
+            height: 42px;
+            border: 2px solid #ff4d00;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all .3s ease;
+        }
+        .profile-link:hover {
+            background: #ff4d00;
+            color: #111;
+        }
+
+
+
+
+        /* =========================
+           PAGE TITLE
+        ========================= */
+
+        .page-title {
+            text-align: center;
+
+            font-size: 55px;
+
+            margin-bottom: 40px;
+
+            font-family: 'Poppins', sans-serif;
+
+            color: white;
+
+            text-shadow: 0 0 15px rgba(255, 77, 0, 0.5);
+
+        }
+
+        .page-title span {
+            color: #ff4d00;
+        }
+
+
+        /* =========================
+           PRODUCT TABLE CONTAINER
+        ========================= */
+
+        .product-section {
+            width: 92%;
+            max-width: 1400px;
+
+            margin: 0 auto 50px auto;
+
+            background-color: rgba(20, 20, 20, 0.92);
+
+            border: 1px solid #333;
+
+            border-left: 5px solid #ff4d00;
+
+            border-radius: 12px;
+
+            padding: 25px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+
+            overflow-x: auto;
+            margin-bottom: 350px;
+        }
+
+
+        /* =========================
+           PRODUCT TABLE
+        ========================= */
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            color: white;
+        }
+
+        th {
+            background-color: #ff4d00;
+
+            color: #111;
+
+            font-size: 18px;
+
+            padding: 18px 15px;
+
+            text-align: center;
+
+            font-weight: 700;
+        }
+
+        td {
+            padding: 20px 15px;
+
+            text-align: center;
+
+            font-size: 16px;
+
+            border-bottom: 1px solid #444;
+
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background-color: rgba(0, 168, 255, 0.08);
+        }
+
+
+        /* Product name */
+
+        .product-name {
+            font-weight: 600;
+
+            color: #ff4d00;
+
+            font-size: 18px;
+        }
+
+
+        /* Product description */
+
+        .description {
+            color: #cccccc;
+
+            line-height: 1.6;
+
+            text-align: left;
+        }
+
+
+        /* Product price */
+
+        .price {
+            font-weight: 700;
+
+            color: white;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           PRODUCT IMAGE
+        ========================= */
+
+        .img_format {
+            width: 220px;
+            height: 150px;
+
+            border: 2px solid #555;
+
+            border-radius: 10px;
+
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+
+            transition: transform 0.3s ease,
+                        border-color 0.3s ease;
+        }
+
+        .img_format:hover {
+            transform: scale(1.05);
+
+            border-color: #ff4d00;
+        }
+
+
+        /* =========================
+           PRICE CALCULATOR
+        ========================= */
+
+        .calculator {
+            width: 600px;
+            max-width: 90%;
+
+            margin: 0 auto 60px auto;
+
+            padding: 40px;
+
+            background-color: rgba(20, 20, 20, 0.92);
+
+            border: 1px solid #333;
+
+            border-left: 5px solid #ff4d00;
+
+            border-radius: 12px;
+
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+        }
+
+
+        .calculator h2 {
+            text-align: center;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 36px;
+
+            color: white;
+
+            margin-bottom: 30px;
+        }
+
+
+        .calculator h2 span {
+            color: #ff4d00;
+        }
+
+
+        /* Form groups */
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+
+        label {
+            display: block;
+
+            color: white;
+
+            font-size: 17px;
+
+            font-weight: 500;
+
+            margin-bottom: 8px;
+        }
+
+
+        /* Select and inputs */
+
+        select,
+        input[type="number"],
+        input[type="text"] {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 16px;
+
+            border: 2px solid #555;
+
+            border-radius: 6px;
+
+            background-color: #222;
+
+            color: white;
+
+            outline: none;
+
+            transition: border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+
+        select:focus,
+        input[type="number"]:focus {
+            border-color: #ff4d00;
+
+            box-shadow: 0 0 8px rgba(0, 168, 255, 0.3);
+        }
+
+
+        select {
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           CALCULATE BUTTON
+        ========================= */
+
+        .cal-bt {
+            width: 100%;
+
+            padding: 13px;
+
+            color: white;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            border: 2px solid #ff4d00;
+
+            background-color: #ff4d00;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+        }
+
+        .cal-bt:hover {
+            background-color: transparent;
+
+            color: #00a8ff;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* Total result */
+
+        #total {
+            text-align: center;
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            color: #ff4d00;
+
+            background-color: #111;
+
+            cursor: default;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+    footer {
+      margin-top: 60px;
+
+      padding: 25px;
+
+      text-align: center;
+
+      background-color: #080808;
+
+      border-top: 1px solid #333;
+
+      color: #888;
+
+      font-size: 14px;
+    }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 1000px) {
+
+            .navbar {
+                padding: 0 30px;
+            }
+
+            .nav-links {
+                gap: 25px;
+            }
+
+            .product-section {
+                width: 95%;
+            }
+
+            th,
+            td {
+                font-size: 14px;
+            }
+
+            .img_format {
+                width: 180px;
+                height: 130px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            .navbar {
+                height: auto;
+
+                padding: 15px;
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+            }
+
+            .logo {
+                width: 110px;
+            }
+
+            .nav-links {
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 20px;
+            }
+
+            .nav-item {
+                font-size: 14px;
+            }
+
+            .login-btn {
+                font-size: 14px;
+
+                padding: 7px 18px;
+            }
+
+            .page-title {
+                font-size: 40px;
+
+                margin-top: 40px;
+            }
+
+            .product-section {
+                padding: 15px;
+            }
+
+            .img_format {
+                width: 150px;
+                height: 110px;
+            }
+
+            th,
+            td {
+                font-size: 13px;
+
+                padding: 12px 8px;
+            }
+
+            .calculator {
+                padding: 25px;
+            }
+
+            .calculator h2 {
+                font-size: 30px;
+            }
+        }
+
+        /* Main Container */
+.container {
+  max-width: 1300px; /* Increased from 1100px */
+  width: 100%;
+  margin: 0 auto;
+  padding: 50px 30px 80px;
+  flex: 1;
+}
+
+/* Split Card Layout */
+.contact-card {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  border: 1px solid #222222;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  min-height: 550px; /* Gives the card a larger default height */
+}
+
+/* Left Side: Information */
+.contact-info {
+  flex: 1 1 360px; /* Expanded basis width */
+  background-color: #161616;
+  padding: 50px; /* Increased inner padding */
+  border-right: 1px solid #222222;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* Right Side: Form */
+.contact-form-container {
+  flex: 2 1 550px; /* Expanded basis width */
+  padding: 50px; /* Increased inner padding */
+}
+
+.contact-info h2 {
+      font-size: 22px;
+      color: #ff5500;
+      margin-bottom: 8px;
+    }
+
+    .info-block h3 {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #888888;
+      margin-bottom: 4px;
+    }
+
+    .info-block p {
+      color: #dddddd;
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .contact-form-container h2 {
+      font-size: 22px;
+      color: #ffffff;
+      margin-bottom: 24px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .form-group label {
+      font-size: 13px;
+      color: #aaaaaa;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px 14px;
+      background-color: #111111;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      color: #ffffff;
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #ff5500;
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+      color: #aaaaaa;
+      margin-top: 4px;
+    }
+
+    .checkbox-group input {
+      accent-color: #ff5500;
+      width: 16px;
+      height: 16px;
+    }
+
+    .btn-submit {
+      align-self: flex-start;
+      background-color: #ff5500;
+      color: #ffffff;
+      padding: 12px 36px;
+      border: none;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: #e04a00;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 20px;
+      background-color: #000000;
+      color: #666666;
+      font-size: 13px;
+      border-top: 1px solid #222222;
+    }
+
+    </style>
+
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION BAR
+    ========================== -->
+    <header>
+
+    <!-- Navigation -->
+    <nav>
+        <a class="logo" href="index.html" style="text-decoration: none;">MR Car<span> Auto</span></a>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="purchase.html">Purchase</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-account">
+                <button
+                    id="loginButton"
+                    class="login-btn"
+                    onclick="window.location.href='login.html'">
+                    Login
+                </button>
+
+                <a
+                    id="profileButton"
+                    class="profile-link"
+                    href="profile.php"
+                    title="Profile"
+                    style="display:none;">
+                    👤
+                </a>
+
+                <button
+                    id="logoutButton"
+                    class="logout-btn"
+                    type="button"
+                    style="display:none;"
+                    onclick="logoutUser()">
+                    Logout
+                </button>
+            </div>
+    </nav>
+
+  </header>
+
+  <main class="container">
+    <h1 class="page-title">Contact <span>Us</span></h1>
+
+    <div class="contact-card">
+      <!-- Left Column: Details -->
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        
+        <div class="info-block">
+          <h3>Phone</h3>
+          <p>+60 12-345 6789</p>
+        </div>
+
+        <div class="info-block">
+          <h3>Email</h3>
+          <p>info@mrcarauto.com</p>
+        </div>
+
+        <div class="info-block">
+          <h3>Office Location</h3>
+          <p>123 Auto Park Road,<br>30000 Ipoh, Perak, Malaysia</p>
+        </div>
+
+        <div class="info-block">
+          <h3>Business Hours</h3>
+          <p>Mon - Sat: 9:00 AM - 7:00 PM<br>Sun: Closed</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Form -->
+      <div class="contact-form-container">
+        <h2>Ask us anything</h2>
+<form class="contact-form" action="contact.php" method="POST">
+  <div class="form-row">
+    <div class="form-group">
+      <label for="first_name">First name</label>
+      <input type="text" id="first_name" name="first_name" required>
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last name</label>
+      <input type="text" id="last_name" name="last_name" required>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="message">How can we help?</label>
+    <textarea id="message" name="message" rows="4" required></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit">Submit</button>
+</form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 MR Car Auto Accessories. All Rights Reserved.
+  </footer>
+
+  <script src="auth_nav.js"></script>
+
+</body>
+
+</html>

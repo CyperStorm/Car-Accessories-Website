@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - MR Car Auto Accessories</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-image:
+                linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.78)),
+                url("img/dark_background.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        nav {
+            background-color: rgba(10,10,10,.95);
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-top: 1px solid #333;
+            border-bottom: 1px solid #333;
+        }
+
+        .logo {
+            color: white;
+            font-size: 25px;
+            font-weight: 800;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .logo span { color: #ff4d00; }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            transition: color .3s ease;
+        }
+        nav ul li a:hover { color: #ff4d00; }
+
+        nav ul li a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background-color: #ff4d00;
+            transition: width .3s ease;
+        }
+        nav ul li a:hover::after { width: 100%; }
+
+        .nav-account {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .login-btn, .logout-btn {
+            background-color: transparent;
+            color: white;
+            border: 2px solid rgb(255, 77, 0, 0);
+            padding: 8px 22px;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .login-btn:hover, .logout-btn:hover {
+            background-color: rgb(255, 77, 0, 0);
+            color: #111;
+            transform: translateY(-2px);
+        }
+
+        .profile-link {
+            width: 42px;
+            height: 42px;
+            border: 2px solid rgb(255, 77, 0, 0);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-size: 22px;
+            transition: all .3s ease;
+        }
+        .profile-link:hover {
+            background: rgb(255, 77, 0, 0);
+            color: #111;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 50px;
+            margin: 50px 0 30px;
+            color: white;
+            text-shadow: 0 0 15px rgba(255,77,0,.5);
+        }
+        .page-title span { color: #ff4d00; }
+
+        .login-card {
+            width: 500px;
+            max-width: 90%;
+            margin: 20px auto 60px;
+            padding: 40px;
+            background-color: rgba(20,20,20,.94);
+            border: 1px solid #333;
+            border-left: 5px solid #ff4d00;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,.6);
+        }
+
+        .login-card h2 {
+            text-align: center;
+            font-size: 34px;
+            color: white;
+            margin-bottom: 35px;
+        }
+
+        .input-group { margin-bottom: 22px; }
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            color: #ddd;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 13px 15px;
+            border-radius: 6px;
+            border: 2px solid #444;
+            background-color: #222;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+        }
+        .input-group input:focus {
+            border-color: #ff4d00;
+            box-shadow: 0 0 8px rgba(255,77,0,.3);
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0 25px;
+            font-size: 14px;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            color: #aaa;
+        }
+        .remember-me input { accent-color: #ff4d00; }
+        .actions a, .register-link a { color: #ff4d00; text-decoration: none; }
+        .actions a:hover, .register-link a:hover { text-decoration: underline; }
+
+        .btn-submit {
+            width: 100%;
+            padding: 13px;
+            border: 2px solid #ff4d00;
+            border-radius: 6px;
+            background-color: #ff4d00;
+            color: white;
+            font-family: inherit;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .btn-submit:hover {
+            background-color: transparent;
+            color: #ff4d00;
+            transform: translateY(-2px);
+        }
+
+        .register-link {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #999;
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: #080808;
+            color: #888;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #333;
+            font-size: 14px;
+        }
+
+        #login-error {
+            color: #ff6b6b;
+            text-align: center;
+            margin-bottom: 15px;
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+            nav { flex-wrap: wrap; justify-content: center; gap: 15px; padding: 15px; }
+            .logo { width: 100%; text-align: center; }
+            nav ul { order: 3; width: 100%; justify-content: center; gap: 18px; }
+            nav ul li a { font-size: 13px; }
+            .page-title { font-size: 38px; }
+            .login-card { padding: 30px 25px; }
+            .login-card h2 { font-size: 29px; }
+        }
+    </style>
+</head>
+
+<body>
+<header>
+    <nav>
+        <a class="logo" href="home.html">MR Car<span> Auto</span></a>
+
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="purchase.html">Purchase</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+        <div class="nav-account">
+            <button id="loginButton" class="login-btn" onclick="window.location.href='login.html'"></button>
+
+            <a id="profileButton" class="profile-link" href="profile.php" title="Profile" style="display:none;">
+                👤
+            </a>
+
+            <button id="logoutButton" class="logout-btn" type="button" style="display:none;" onclick="logoutUser()">
+                Logout
+            </button>
+        </div>
+    </nav>
+</header>
+
+<h1 class="page-title">Account <span>Login</span></h1>
+
+<div class="login-card">
+    <h2>Welcome Back</h2>
+
+    <div id="login-error"></div>
+
+    <form action="login.php" method="POST">
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required placeholder="Enter your username">
+        </div>
+
+        <div class="input-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+        </div>
+
+        <div class="input-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required placeholder="Enter your password">
+        </div>
+
+        <div class="actions">
+            <label class="remember-me">
+                <input type="checkbox" id="remember" name="remember">
+                <span>Remember me</span>
+            </label>
+            <a href="forgot_password.html">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn-submit">Sign In</button>
+
+        <div class="register-link">
+            Don't have an account? <a href="register.html">Create Account</a>
+        </div>
+    </form>
+</div>
+
+<footer>
+    <p>© 2026 MR Car Auto Accessories. All Rights Reserved.</p>
+</footer>
+
+<script src="auth_nav.js"></script>
+</body>
+</html>

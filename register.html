@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account - MR Car Auto Accessories</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <style>
+
+        /* =========================
+           GENERAL
+        ========================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.78),
+                    rgba(0, 0, 0, 0.78)
+                ),
+                url("img/dark_background.jpg");
+
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+
+            font-family: 'Poppins', sans-serif;
+
+            color: white;
+
+            line-height: 1.7;
+
+            min-height: 100vh;
+
+            display: flex;
+            flex-direction: column;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================= */
+
+        nav {
+
+            background-color: rgba(10, 10, 10, 0.95);
+
+            min-height: 70px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 12px 8%;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            border-top: 1px solid #333;
+
+            border-bottom: 1px solid #333;
+        }
+
+
+        /* Logo */
+
+        .logo {
+
+            color: white;
+
+            font-size: 25px;
+
+            font-weight: 800;
+
+            text-decoration: none;
+
+            white-space: nowrap;
+
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .logo span {
+
+            color: #ff4d00;
+        }
+
+
+        /* Navigation links */
+
+        nav ul {
+
+            list-style: none;
+
+            display: flex;
+
+            gap: 30px;
+        }
+
+        nav ul li a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            font-weight: 500;
+
+            position: relative;
+
+            transition: color 0.3s ease;
+        }
+
+
+        nav ul li a:hover {
+
+            color: #ff4d00;
+        }
+
+
+        /* Navigation underline */
+
+        nav ul li a::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -6px;
+
+            width: 0;
+
+            height: 2px;
+
+            background-color: #ff4d00;
+
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+
+            width: 100%;
+        }
+
+
+        /* Login button */
+
+        .login-btn {
+
+            background-color: transparent;
+
+            color: white;
+
+            border: 2px solid rgb(255, 77, 0, 0);
+
+            padding: 8px 22px;
+
+            border-radius: 5px;
+
+            font-size: 15px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+        }
+
+
+        .login-btn:hover {
+
+            background-color: rgb(255, 77, 0, 0);
+
+            color: #111;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           PAGE TITLE
+        ========================= */
+
+        .page-title {
+
+            text-align: center;
+
+            font-size: 50px;
+
+            margin: 50px 0 30px;
+
+            color: white;
+
+            font-family: 'Poppins', sans-serif;
+
+            text-shadow:
+                0 0 15px rgba(255, 77, 0, 0.5);
+        }
+
+
+        .page-title span {
+
+            color: #ff4d00;
+        }
+
+
+        /* =========================
+           REGISTER CARD
+        ========================= */
+
+        .register-container {
+
+            width: 500px;
+
+            max-width: 90%;
+
+            margin: 20px auto 60px auto;
+
+            padding: 40px;
+
+            background-color: rgba(20, 20, 20, 0.94);
+
+            border: 1px solid #333;
+
+            border-left: 5px solid #ff4d00;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.6);
+        }
+
+
+        /* Register title */
+
+        .register-container h2 {
+
+            text-align: center;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 34px;
+
+            color: white;
+
+            margin-bottom: 35px;
+        }
+
+
+        .register-container h2 span {
+
+            color: #ff4d00;
+        }
+
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-group {
+
+            margin-bottom: 22px;
+        }
+
+
+        .form-group label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 16px;
+
+            font-weight: 500;
+
+            color: #ddd;
+        }
+
+
+        .form-group input {
+
+            width: 100%;
+
+            padding: 13px 15px;
+
+            background-color: #222;
+
+            border: 2px solid #444;
+
+            border-radius: 6px;
+
+            color: white;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 15px;
+
+            outline: none;
+
+            transition:
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+
+        .form-group input::placeholder {
+
+            color: #777;
+        }
+
+
+        .form-group input:focus {
+
+            border-color: #ff4d00;
+
+            box-shadow:
+                0 0 8px rgba(255, 77, 0, 0.3);
+        }
+
+
+        /* =========================
+           PASSWORD REQUIREMENT
+        ========================= */
+
+        .password-note {
+
+            margin-top: 6px;
+
+            color: #888;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           SUBMIT BUTTON
+        ========================= */
+
+        .btn-submit {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 2px solid #ff4d00;
+
+            border-radius: 6px;
+
+            background-color: #ff4d00;
+
+            color: white;
+
+            font-family: 'Poppins', sans-serif;
+
+            font-size: 17px;
+
+            font-weight: 600;
+
+            cursor: pointer;
+
+            transition: all 0.3s ease;
+
+            margin-top: 10px;
+        }
+
+
+        .btn-submit:hover {
+
+            background-color: transparent;
+
+            color: #ff4d00;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FORM FOOTER
+        ========================= */
+
+        .form-footer {
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            font-size: 14px;
+
+            color: #999;
+        }
+
+
+        .form-footer a {
+
+            color: #ff4d00;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            transition: color 0.3s ease;
+        }
+
+
+        .form-footer a:hover {
+
+            color: #ff7438;
+
+            text-decoration: underline;
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            margin-top: auto;
+
+            background-color: #080808;
+
+            color: #888;
+
+            text-align: center;
+
+            padding: 20px;
+
+            border-top: 1px solid #333;
+
+            font-size: 14px;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+
+                padding: 12px 30px;
+            }
+
+            nav ul {
+
+                gap: 20px;
+            }
+
+            nav ul li a {
+
+                font-size: 14px;
+            }
+        }
+
+
+        @media (max-width: 700px) {
+
+            nav {
+
+                flex-wrap: wrap;
+
+                justify-content: center;
+
+                gap: 15px;
+
+                padding: 15px;
+            }
+
+
+            .logo {
+
+                width: 100%;
+
+                text-align: center;
+            }
+
+
+            nav ul {
+
+                order: 3;
+
+                width: 100%;
+
+                justify-content: center;
+
+                gap: 18px;
+            }
+
+
+            nav ul li a {
+
+                font-size: 13px;
+            }
+
+
+            .login-btn {
+
+                font-size: 13px;
+
+                padding: 7px 18px;
+            }
+
+
+            .page-title {
+
+                font-size: 38px;
+
+                margin-top: 35px;
+            }
+
+
+            .register-container {
+
+                padding: 30px 25px;
+
+                margin-top: 10px;
+            }
+
+
+            .register-container h2 {
+
+                font-size: 29px;
+
+                margin-bottom: 30px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
+
+    <header>
+
+        <nav>
+
+            <!-- Logo -->
+
+            <a class="logo" href="home.html">
+                MR Car<span> Auto</span>
+            </a>
+
+
+            <!-- Navigation links -->
+
+            <ul>
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="purchase.html">
+                        Purchase
+                    </a>
+                </li>
+
+                <li>
+                    <a href="about.html">
+                        About Us
+                    </a>
+                </li>
+
+                <li>
+                    <a href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+            </ul>
+
+
+            <!-- Login button -->
+
+            <button
+                class="login-btn"
+                onclick="window.location.href='login.html'">
+
+                
+
+            </button>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =========================
+         PAGE TITLE
+    ========================== -->
+
+    <h1 class="page-title">
+        Create <span>Account</span>
+    </h1>
+
+
+
+    <!-- =========================
+         REGISTER FORM
+    ========================== -->
+
+    <div class="register-container">
+
+        <h2>
+            Join in as member
+        </h2>
+
+
+        <form action="register.php" method="POST">
+
+
+            <!-- Username -->
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Choose a username"
+                    required>
+
+            </div>
+
+
+            <!-- Email -->
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email Address
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required>
+
+            </div>
+
+
+            <!-- Password -->
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required>
+
+                <p class="password-note">
+                    Choose a secure password for your account.
+                </p>
+
+            </div>
+
+
+            <!-- Confirm Password -->
+
+            <div class="form-group">
+
+                <label for="confirm-password">
+                    Confirm Password
+                </label>
+
+                <input
+                    type="password"
+                    id="confirm-password"
+                    name="confirm-password"
+                    placeholder="Confirm your password"
+                    required>
+
+            </div>
+
+
+            <!-- Submit -->
+
+            <button
+                type="submit"
+                class="btn-submit">
+
+                Create Account
+
+            </button>
+
+        </form>
+
+
+        <!-- Login link -->
+
+        <div class="form-footer">
+
+            Already have an account?
+
+            <a href="login.html">
+                Sign In
+            </a>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <p>
+            © 2026 MR Car Auto Accessories.
+            All Rights Reserved.
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
